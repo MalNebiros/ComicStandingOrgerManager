@@ -73,7 +73,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Adapters\SqliteAdapter.cs" />
+    <Compile Include="DatabaseManagement\DatabaseVersionManager.cs" />
+    <Compile Include="DatabaseManagement\DatabaseConnectionManager.cs" />
     <Compile Include="ViewModels\ComicSeriesViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\IComicSeriesViewModel.cs" />
@@ -125,6 +126,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Adapters\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
