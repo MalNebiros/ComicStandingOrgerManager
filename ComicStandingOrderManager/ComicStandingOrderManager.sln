@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicStandingOrderManager", "ComicStandingOrderManager\ComicStandingOrderManager.csproj", "{DC09B41B-E4A7-4FF6-8997-0E389161F6CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC09B41B-E4A7-4FF6-8997-0E389161F6CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC09B41B-E4A7-4FF6-8997-0E389161F6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC09B41B-E4A7-4FF6-8997-0E389161F6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC09B41B-E4A7-4FF6-8997-0E389161F6CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDBAE4CF-C9B9-4407-9EE7-BB512F6B0F49}
+	EndGlobalSection
+EndGlobal
