@@ -9,6 +9,11 @@ namespace ComicStandingOrderManager.ViewModels
 {
     class StandingOrdersSummary
     {
-        Dictionary<ComicSeries, int> SeriesSubscriberCount;        
+        private Dictionary<ComicSeries, int> SeriesSubscriberCount;
+
+        internal void PopulateSeriesSubscriberCounts()
+        {
+
+        }
     }
 }

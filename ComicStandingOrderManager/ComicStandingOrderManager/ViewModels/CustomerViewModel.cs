@@ -11,5 +11,6 @@ namespace ComicStandingOrderManager.ViewModels
         string _firstName;
         string _lastName;
         string _emailAddress;
+        IList<string> _namesOfSeriesSubscribedTo;
     }
 }

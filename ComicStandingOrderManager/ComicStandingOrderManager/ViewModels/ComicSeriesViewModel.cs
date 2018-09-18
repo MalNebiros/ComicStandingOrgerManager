@@ -10,6 +10,6 @@ namespace ComicStandingOrderManager.ViewModels
     {
         string _name;
         string _publisher;
-        IList<string> _subscribedCustomers;
+        IList<string> _namesOfSubscribedCustomers;
     }
 }
