@@ -19,7 +19,7 @@ namespace ComicStandingOrderManager.DataModels
             _email = email;
         }
 
-        internal Customer(string firstName, string _lastName, string email, IList<IComicSeries> standingOrders) : this(firstName, lastName, email)
+        internal Customer(string firstName, string lastName, string email, IList<IComicSeries> standingOrders) : this(firstName, lastName, email)
         {
             _standingOrders = standingOrders;
         }
