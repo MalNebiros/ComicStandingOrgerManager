@@ -16,6 +16,11 @@ namespace ComicStandingOrderManager.DatabaseManagement
         {
             databaseVersionManager.EnsureDatabaseVersionIsCorrect(_databaseFileName);
         }
-        
+
+        public SQLiteConnection GetConnection()
+        {
+            SQLiteConnection databaseConnection = new SQLiteConnection($"Data Source={_databaseFileName};Version=3;");
+            return databaseConnection;
+        }
     }
 }
