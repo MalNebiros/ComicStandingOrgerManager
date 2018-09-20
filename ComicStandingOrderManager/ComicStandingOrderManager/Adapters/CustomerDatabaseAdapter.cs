@@ -55,7 +55,6 @@ namespace ComicStandingOrderManager.Adapters
             }
         }
 
-
         public IList<ICustomer> GetCustomers()
         {
             List<ICustomer> customers = new List<ICustomer>();

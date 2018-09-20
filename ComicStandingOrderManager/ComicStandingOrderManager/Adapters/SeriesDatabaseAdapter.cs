@@ -55,7 +55,6 @@ namespace ComicStandingOrderManager.Adapters
             }
         }
 
-
         public IList<IComicSeries> GetSeries()
         {
             List<IComicSeries> series = new List<IComicSeries>();

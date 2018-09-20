@@ -47,7 +47,6 @@ namespace ComicStandingOrderManager.Adapters
             }
         }
 
-
         public IDictionary<string, int> GetAggregatedStandingOrders()
         {
             Dictionary<string, int> seriesOrderCounts = new Dictionary<string, int>();
@@ -100,6 +99,7 @@ namespace ComicStandingOrderManager.Adapters
                 connection.Close();
             }
         }
+
         private ComicSeries QueryEntryToSeries(SQLiteDataReader reader)
         {
             var id = (int)reader[$"{ComicSeriesTableStructure.Id}"];
