@@ -8,20 +8,22 @@ namespace ComicStandingOrderManager.DataModels
 {
     internal class Customer : ICustomer
     {
-        private int _id;
-        private string _firstName;
-        private string _lastName;
-        private string _email;
-        private IList<IComicSeries> _standingOrders;
+        internal int Id { get; private set; }
+        internal string FirstName { get; private set; }
+        internal string LastName { get; private set; }
+        internal string Email { get; private set; }
+        internal IList<IComicSeries> StandingOrders { get; private set; }
 
-        internal Customer(string firstName, string _lastName, string email)
+        internal Customer(string firstName, string lastName, string email)
         {
-            _email = email;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
         }
 
         internal Customer(string firstName, string lastName, string email, IList<IComicSeries> standingOrders) : this(firstName, lastName, email)
         {
-            _standingOrders = standingOrders;
+            StandingOrders = standingOrders;
         }
     }
 }

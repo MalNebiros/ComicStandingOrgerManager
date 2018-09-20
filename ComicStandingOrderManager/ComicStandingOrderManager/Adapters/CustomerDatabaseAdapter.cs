@@ -18,6 +18,44 @@ namespace ComicStandingOrderManager.Adapters
             _databaseConnectionManager = databaseConnectionManager;
         }
 
+        public bool AddNewCustomer(Customer customer)
+        {
+            if(GetCustomerByName(customer.FirstName, customer.LastName) != null)
+            {
+                return false;
+            }
+
+            var connection = _databaseConnectionManager.GetConnection();
+            var sql = $"INSERT INTO {CustomersTableStructure.TableName} ({CustomersTableStructure.FirstName}, {CustomersTableStructure.LastName}, {CustomersTableStructure.Email}) values ('{customer.FirstName}', '{customer.LastName}', '{customer.Email}')";
+            var command = new SQLiteCommand(sql, connection);
+
+            connection.Open();
+            var returnCode = command.ExecuteNonQuery();
+            connection.Close();
+            return returnCode == 1;
+        }
+
+        public bool DeleteCustomer(Customer customer)
+        {
+            if (GetCustomerByName(customer.FirstName, customer.LastName) != null)
+            {
+
+                var connection = _databaseConnectionManager.GetConnection();
+                var sql = $"DELETE FROM {CustomersTableStructure.TableName} WHERE {CustomersTableStructure.FirstName}={customer.FirstName} AND {CustomersTableStructure.LastName}={customer.LastName}";
+                var command = new SQLiteCommand(sql, connection);
+
+                connection.Open();
+                var returnCode = command.ExecuteNonQuery();
+                connection.Close();
+                return returnCode == 1;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
         public IList<ICustomer> GetCustomers()
         {
             List<ICustomer> customers = new List<ICustomer>();
