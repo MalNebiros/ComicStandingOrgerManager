@@ -9,12 +9,13 @@ namespace ComicStandingOrderManager.DatabaseManagement
 {
     class DatabaseConnectionManager
     {
-        private DatabaseVersionManager databaseVersionManager;
+        private DatabaseVersionManager _databaseVersionManager;
         private const string _databaseFileName = "standingOrders.sqlite";
 
-        public DatabaseConnectionManager()
+        public DatabaseConnectionManager(DatabaseVersionManager databaseVersionManager)
         {
-            databaseVersionManager.EnsureDatabaseVersionIsCorrect(_databaseFileName);
+            _databaseVersionManager = databaseVersionManager;
+            _databaseVersionManager.EnsureDatabaseVersionIsCorrect(_databaseFileName);
         }
 
         public SQLiteConnection GetConnection()

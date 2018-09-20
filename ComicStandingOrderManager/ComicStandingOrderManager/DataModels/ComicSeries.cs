@@ -8,8 +8,15 @@ namespace ComicStandingOrderManager.DataModels
 {
     internal class ComicSeries : IComicSeries
     {
-        private int _id;
-        private string _name;
-        private string _publisher;
+        internal int Id { get; private set; }
+        internal string Name { get; private set; }
+        internal string Publisher { get; private set; }
+
+        internal ComicSeries(int id, string name, string publisher)
+        {
+            Id = id;
+            Name = name;
+            Publisher = publisher;
+        }
     }
 }

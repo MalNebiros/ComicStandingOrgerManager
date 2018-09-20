@@ -26,7 +26,7 @@ namespace ComicStandingOrderManager.Adapters
             }
 
             var connection = _databaseConnectionManager.GetConnection();
-            var sql = $"INSERT INTO {CustomersTableStructure.TableName} ({CustomersTableStructure.FirstName}, {CustomersTableStructure.LastName}, {CustomersTableStructure.Email}) values ('{customer.FirstName}', '{customer.LastName}', '{customer.Email}')";
+            var sql = $"INSERT INTO {CustomersTableStructure.TableName} ({CustomersTableStructure.Id}, {CustomersTableStructure.FirstName}, {CustomersTableStructure.LastName}, {CustomersTableStructure.Email}) values ({customer.Id}, '{customer.FirstName}', '{customer.LastName}', '{customer.Email}')";
             var command = new SQLiteCommand(sql, connection);
 
             connection.Open();
@@ -41,7 +41,7 @@ namespace ComicStandingOrderManager.Adapters
             {
 
                 var connection = _databaseConnectionManager.GetConnection();
-                var sql = $"DELETE FROM {CustomersTableStructure.TableName} WHERE {CustomersTableStructure.FirstName}={customer.FirstName} AND {CustomersTableStructure.LastName}={customer.LastName}";
+                var sql = $"DELETE FROM {CustomersTableStructure.TableName} WHERE {CustomersTableStructure.FirstName}='{customer.FirstName}' AND {CustomersTableStructure.LastName}='{customer.LastName}'";
                 var command = new SQLiteCommand(sql, connection);
 
                 connection.Open();
@@ -64,15 +64,21 @@ namespace ComicStandingOrderManager.Adapters
             string sql = $"SELECT * FROM {CustomersTableStructure.TableName}";
 
             SQLiteCommand command = new SQLiteCommand(sql, connection);
-            connection.Open();
-            SQLiteDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                var customer = QueryEntryToCustomer(reader);
-                customers.Add(customer);
+                connection.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var customer = QueryEntryToCustomer(reader);
+                    customers.Add(customer);
+                }
+                return customers;
             }
-            connection.Close();
-            return customers;
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public ICustomer GetCustomerByName(string firstName, string lastName)

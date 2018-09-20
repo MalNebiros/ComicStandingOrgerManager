@@ -11,5 +11,6 @@ namespace ComicStandingOrderManager.DatabaseManagement
         internal const string TableName = "StandingOrders";
         internal const string Id = "Id";
         internal const string Name = "Name";
+        internal const string Publisher = "Publisher";
     }
 }

@@ -75,6 +75,7 @@
     </ApplicationDefinition>
     <Compile Include="Adapters\CustomerDatabaseAdapter.cs" />
     <Compile Include="Adapters\SeriesDatabaseAdapter.cs" />
+    <Compile Include="Adapters\StandingOrdersDatabaseAdapter.cs" />
     <Compile Include="DatabaseManagement\ComicSeriesTableStructure.cs" />
     <Compile Include="DatabaseManagement\CustomersTableStructure.cs" />
     <Compile Include="DatabaseManagement\DatabaseVersionManager.cs" />
