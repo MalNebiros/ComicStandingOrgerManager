@@ -9,16 +9,11 @@ using System.Threading.Tasks;
 
 namespace ComicStandingOrderManager.Adapters
 {
-    class CustomerDatabaseAdapter
+    internal class CustomerDatabaseAdapter
     {
         private DatabaseConnectionManager _databaseConnectionManager;
-        private const string _customerTableName = "Customers";
-        private const string _customerFirstName = "FirstName";
-        private const string _customerLastName = "LastName";
-        private const string _customerEmail = "Email";
-        private
 
-        public CustomerDatabaseAdapter(DatabaseConnectionManager databaseConnectionManager)
+        CustomerDatabaseAdapter(DatabaseConnectionManager databaseConnectionManager)
         {
             _databaseConnectionManager = databaseConnectionManager;
         }
@@ -28,7 +23,7 @@ namespace ComicStandingOrderManager.Adapters
             List<ICustomer> customers = new List<ICustomer>();
 
             var connection = _databaseConnectionManager.GetConnection();
-            string sql = $"SELECT * FROM {_customerTableName}";
+            string sql = $"SELECT * FROM {CustomersTableStructure.TableName}";
 
             SQLiteCommand command = new SQLiteCommand(sql, connection);
             connection.Open();
@@ -47,7 +42,7 @@ namespace ComicStandingOrderManager.Adapters
             List<ICustomer> customers = new List<ICustomer>();
 
             var connection = _databaseConnectionManager.GetConnection();
-            string sql = $"SELECT * FROM {_customerTableName} WHERE {_customerFirstName}={firstName} AND {_customerLastName}={lastName}";
+            string sql = $"SELECT * FROM {CustomersTableStructure.TableName} WHERE {CustomersTableStructure.FirstName}={firstName} AND {CustomersTableStructure.LastName}={lastName}";
 
             SQLiteCommand command = new SQLiteCommand(sql, connection);
             connection.Open();
@@ -73,9 +68,9 @@ namespace ComicStandingOrderManager.Adapters
 
         private Customer QueryEntryToCustomer(SQLiteDataReader reader)
         {
-            var firstName = (string)reader[$"{_customerFirstName}"];
-            var lastName = (string)reader[$"{_customerLastName}"];
-            var email = (string)reader[$"{_customerEmail}"];
+            var firstName = (string)reader[$"{CustomersTableStructure.FirstName}"];
+            var lastName = (string)reader[$"{CustomersTableStructure.LastName}"];
+            var email = (string)reader[$"{CustomersTableStructure.Email}"];
             return new Customer(firstName, lastName, email);
         }
     }

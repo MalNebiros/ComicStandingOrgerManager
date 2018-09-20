@@ -39,14 +39,14 @@ namespace ComicStandingOrderManager.DatabaseManagement
             databaseConnection.Open();
             try
             {
-                string sql = "select * from System WHERE Key=DatabaseVersion";
+                string sql = $"select * from {SystemTableStructure.TableName} WHERE {SystemTableStructure.Key}=DatabaseVersion";
                 SQLiteCommand command = new SQLiteCommand(sql, databaseConnection);
                 SQLiteDataReader reader = command.ExecuteReader();
                 reader.Read();
-                string keyCheck = (string)reader["Key"];
+                string keyCheck = (string)reader[$"{SystemTableStructure.Key}"];
                 if (keyCheck == "DatabaseVersion")
                 {
-                    var foundDatabaseVersion = (int)reader["Value"];
+                    var foundDatabaseVersion = (int)reader[$"{SystemTableStructure.Value}"];
                     return foundDatabaseVersion;
                 }
                 return -1;
@@ -83,11 +83,11 @@ namespace ComicStandingOrderManager.DatabaseManagement
 
         private void CreateSystemTable(SQLiteConnection databaseConnection)
         {
-            string sql = "CREATE TABLE System (Key varchar(50), Value varchar(50)";
+            string sql = $"CREATE TABLE {SystemTableStructure.TableName} ({SystemTableStructure.Key} varchar(50), {SystemTableStructure.Value} varchar(50)";
             SQLiteCommand command = new SQLiteCommand(sql, databaseConnection);
             command.ExecuteNonQuery();
 
-            sql = $"INSERT INTO System (Key, Value) values ('DatabaseVersion', {LatestDatabaseVersion})";
+            sql = $"INSERT INTO {SystemTableStructure.TableName} ({SystemTableStructure.Key}, {SystemTableStructure.Value}) values ('DatabaseVersion', {LatestDatabaseVersion})";
 
             command = new SQLiteCommand(sql, databaseConnection);
             command.ExecuteNonQuery();
@@ -95,21 +95,21 @@ namespace ComicStandingOrderManager.DatabaseManagement
 
         private void CreateCustomersTable(SQLiteConnection databaseConnection)
         {
-            string sql = "CREATE TABLE Customers (Id int, FirstName varchar(50), LastName varchar(50), Email varchar(100), KEY(FirstName, LastName))";
+            string sql = $"CREATE TABLE {CustomersTableStructure.TableName} ({CustomersTableStructure.Id} int, {CustomersTableStructure.FirstName} varchar(50), {CustomersTableStructure.LastName} varchar(50), {CustomersTableStructure.Email} varchar(100), KEY({CustomersTableStructure.FirstName}, {CustomersTableStructure.LastName}))";
             SQLiteCommand command = new SQLiteCommand(sql, databaseConnection);
             command.ExecuteNonQuery();
         }
 
         private void CreateComicSeriesTable(SQLiteConnection databaseConnection)
         {
-            string sql = "CREATE TABLE ComicSeries (Id int, Name varchar(255), KEY(Name)";
+            string sql = $"CREATE TABLE {ComicSeriesTableStructure.TableName} ({ComicSeriesTableStructure.Id} int, {ComicSeriesTableStructure.Name} varchar(255), KEY({ComicSeriesTableStructure.Name})";
             SQLiteCommand command = new SQLiteCommand(sql, databaseConnection);
             command.ExecuteNonQuery();
         }
 
         private void CreateStandingOrdersTable(SQLiteConnection databaseConnection)
         {
-            string sql = "CREATE TABLE Standingorders (CustomerId int, SeriesId int, FOREIGN KEY(CustomerId) REFERENCES Customers(Id), FOREIGN KEY(SeriesId) REFERENCES ComicSeries(Id))";
+            string sql = $"CREATE TABLE {StandingOrdersTableStructure.TableName} ({StandingOrdersTableStructure.CustomerId} int, {StandingOrdersTableStructure.SeriesId} int, FOREIGN KEY({StandingOrdersTableStructure.CustomerId}) REFERENCES {CustomersTableStructure.TableName}({CustomersTableStructure.Id}), FOREIGN KEY({StandingOrdersTableStructure.SeriesId}) REFERENCES {ComicSeriesTableStructure.TableName}({ComicSeriesTableStructure.Id}))";
             SQLiteCommand command = new SQLiteCommand(sql, databaseConnection);
             command.ExecuteNonQuery();
         }
