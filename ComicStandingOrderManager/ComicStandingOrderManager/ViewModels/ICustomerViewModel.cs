@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ComicStandingOrderManager.ViewModels
 {
-    interface ICustomerViewModel
+    public interface ICustomerViewModel
     {
+        string firstName { get; set; }
+        string lastName { get; set; }
+        string emailAddress { get; set; }
+        IList<string> namesOfSeriesSubscribedTo { get; set; }
     }
 }

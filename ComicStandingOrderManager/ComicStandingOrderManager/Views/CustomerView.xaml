@@ -1,0 +1,42 @@
+﻿<Page x:Class="ComicStandingOrderManager.Views.CustomerView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComicStandingOrderManager.Views"
+      xmlns:vm="clr-namespace:ComicStandingOrderManager.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CustomerView">
+    <Page.DataContext>
+        <vm:CustomerViewModel/>
+    </Page.DataContext>
+
+    <Grid Name="CustomerDetails" DataContext="{Binding _customerViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="_First Name: " Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Target="{Binding ElementName=CustomerFirstNameField}"/>
+        <Label Content="_Last Name: " Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Target="{Binding ElementName=CustomerLastNameField}"/>
+        <Label Content="_Email: " Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Target="{Binding ElementName=CustomerEmailField}"/>
+        
+        <TextBox x:Name="CustomerFirstNameField" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch"/>
+        <TextBox x:Name="CustomerLastNameField" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"/>
+        <TextBox x:Name="CustomerEmailField" Grid.Column="1" Grid.Row="2" Text="" HorizontalAlignment="Stretch"/>
+
+        <Label x:Name="StandingOrdersLable" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Content="Standing Orders" Grid.ColumnSpan="2"/>
+        <ScrollViewer x:Name="StandingOrders" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="{Binding _customerViewModel.namesOfSeriesSubscribedTo}">
+
+        </ScrollViewer>
+    </Grid>
+</Page>

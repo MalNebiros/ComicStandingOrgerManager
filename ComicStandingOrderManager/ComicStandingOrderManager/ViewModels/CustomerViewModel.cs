@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ComicStandingOrderManager.ViewModels
 {
-    class CustomerViewModel
+    internal class CustomerViewModel : ICustomerViewModel
     {
-        string _firstName;
-        string _lastName;
-        string _emailAddress;
-        IList<string> _namesOfSeriesSubscribedTo;
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string emailAddress { get; set; }
+        public IList<string> namesOfSeriesSubscribedTo { get; set; }
     }
 }
