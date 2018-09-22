@@ -30,12 +30,12 @@
         <Label Content="_Last Name: " Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Target="{Binding ElementName=CustomerLastNameField}"/>
         <Label Content="_Email: " Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Target="{Binding ElementName=CustomerEmailField}"/>
         
-        <TextBox x:Name="CustomerFirstNameField" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch"/>
-        <TextBox x:Name="CustomerLastNameField" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"/>
-        <TextBox x:Name="CustomerEmailField" Grid.Column="1" Grid.Row="2" Text="" HorizontalAlignment="Stretch"/>
+        <TextBox x:Name="CustomerFirstNameField" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Text="{Binding firstName}"/>
+        <TextBox x:Name="CustomerLastNameField" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Text="{Binding lastName}"/>
+        <TextBox x:Name="CustomerEmailField" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Text="{Binding emailAddress}"/>
 
         <Label x:Name="StandingOrdersLable" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Content="Standing Orders" Grid.ColumnSpan="2"/>
-        <ScrollViewer x:Name="StandingOrders" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="{Binding _customerViewModel.namesOfSeriesSubscribedTo}">
+        <ScrollViewer x:Name="StandingOrders" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="{Binding namesOfSeriesSubscribedTo}">
 
         </ScrollViewer>
     </Grid>
