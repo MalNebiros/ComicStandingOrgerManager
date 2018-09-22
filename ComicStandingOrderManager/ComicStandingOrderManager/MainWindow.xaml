@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:ComicStandingOrderManager"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+        <Label Name="PageTitle" Grid.Row="1" Content="Page Title" HorizontalAlignment="Center"/>
+        <Frame Name="NavigationBarFrame" Source="/Views/NavigationBarView.xaml" Grid.Row="0"/>
+        <Frame Name="CurrentPage" Source="{Binding }" Grid.Row="2"/>
     </Grid>
 </Window>

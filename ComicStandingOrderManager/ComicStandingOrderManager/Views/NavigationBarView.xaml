@@ -1,0 +1,19 @@
+﻿<Page x:Class="ComicStandingOrderManager.Views.NavigationBarView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComicStandingOrderManager.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="40"
+      Title="NavigationBarView">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="Customers" Content="Customers" Grid.Column="1"/>
+        <Button Name="ComicSeries" Content="Comic Series" Grid.Column="0"/>
+    </Grid>
+</Page>
