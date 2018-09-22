@@ -83,12 +83,16 @@
     <Compile Include="DatabaseManagement\StandingOrdersTableStructure.cs" />
     <Compile Include="DatabaseManagement\SystemTableStructure.cs" />
     <Compile Include="ViewModels\ComicSeriesViewModel.cs" />
+    <Compile Include="ViewModels\CustomersEntryViewModel.cs" />
     <Compile Include="ViewModels\CustomersViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\IComicSeriesViewModel.cs" />
     <Compile Include="ViewModels\ICustomerViewModel.cs" />
     <Compile Include="ViewModels\ISeriesStandingOrderViewModel.cs" />
     <Compile Include="ViewModels\StandingOrdersSummary.cs" />
+    <Compile Include="Views\CustomersEntryView.xaml.cs">
+      <DependentUpon>CustomersEntryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CustomersView.xaml.cs">
       <DependentUpon>CustomersView.xaml</DependentUpon>
     </Compile>
@@ -111,6 +115,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CustomersEntryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CustomersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
